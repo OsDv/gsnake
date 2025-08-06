@@ -3,7 +3,7 @@ ifeq ($(OS),Windows_NT)
     # Windows
     SYSTEM = Windows
     TARGET = app.exe
-    LDFLAGS = $(LIB_PATH)/libraylib.a -lopengl32 -lgdi32 -lwinmm
+    LDFLAGS = $(LIB_PATH)/windows_libraylib.a -lopengl32 -lgdi32 -lwinmm
     CLEAN_CMD = $(TARGET)
     RM = del
 else
@@ -18,8 +18,8 @@ endif
 CC = gcc
 
 # PATHS
-RAYLIB_PATH = ../lib
-INCLUDE_PATH = ../include/
+RAYLIB_PATH = ../lib/raylib
+INCLUDE_PATH = ./include/
 LIB_PATH = $(RAYLIB_PATH)
 
 # Source files
