@@ -58,6 +58,13 @@ build CMakeFiles/gsnake.dir/src/screen_gameplay.c.obj: C_COMPILER__gsnake_unscan
   OBJECT_DIR = CMakeFiles\gsnake.dir
   OBJECT_FILE_DIR = CMakeFiles\gsnake.dir\src
 
+build CMakeFiles/gsnake.dir/src/screen_mainmenu.c.obj: C_COMPILER__gsnake_unscanned_ C$:/Users/dell/Documents/GitHub/gsnake/src/screen_mainmenu.c || cmake_object_order_depends_target_gsnake
+  DEP_FILE = CMakeFiles\gsnake.dir\src\screen_mainmenu.c.obj.d
+  FLAGS = -std=gnu99
+  INCLUDES = -IC:/Users/dell/Documents/GitHub/gsnake/src/include
+  OBJECT_DIR = CMakeFiles\gsnake.dir
+  OBJECT_FILE_DIR = CMakeFiles\gsnake.dir\src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target gsnake
@@ -66,7 +73,7 @@ build CMakeFiles/gsnake.dir/src/screen_gameplay.c.obj: C_COMPILER__gsnake_unscan
 #############################################
 # Link the executable gsnake.exe
 
-build gsnake.exe: C_EXECUTABLE_LINKER__gsnake_ CMakeFiles/gsnake.dir/src/main.c.obj CMakeFiles/gsnake.dir/src/screen_gameplay.c.obj | C$:/Users/dell/Documents/GitHub/gsnake/lib/raylib/windows_libraylib.a
+build gsnake.exe: C_EXECUTABLE_LINKER__gsnake_ CMakeFiles/gsnake.dir/src/main.c.obj CMakeFiles/gsnake.dir/src/screen_gameplay.c.obj CMakeFiles/gsnake.dir/src/screen_mainmenu.c.obj | C$:/Users/dell/Documents/GitHub/gsnake/lib/raylib/windows_libraylib.a
   LINK_LIBRARIES = C:/Users/dell/Documents/GitHub/gsnake/lib/raylib/windows_libraylib.a  -lopengl32  -lgdi32  -lwinmm  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   LINK_PATH = -LC:/Users/dell/Documents/GitHub/gsnake/lib/raylib
   OBJECT_DIR = CMakeFiles\gsnake.dir

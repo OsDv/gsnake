@@ -1,5 +1,9 @@
 {
 	"files.associations": {
-		"raylib.h": "c"
+		"raylib.h": "c",
+		"screen_gameplay.h": "c",
+		"stdio.h": "c",
+		"screen_mainmenu.h": "c",
+		"definitions.h": "c"
 	}
 }

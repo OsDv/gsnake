@@ -7,4 +7,5 @@
 void Render_gameplay();
 void update_gameplay();
 void init_gameplay(Color color ,int skin,int head);
+void LoadGameplayScreen();
 #endif

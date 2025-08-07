@@ -5,6 +5,7 @@ link_directories(${CMAKE_SOURCE_DIR}/lib/raylib)
 add_executable(gsnake 
 	src/main.c
 	src/screen_gameplay.c
+	src/screen_mainmenu.c
 )
 target_link_libraries(gsnake PRIVATE ${CMAKE_SOURCE_DIR}/lib/raylib/windows_libraylib.a -lopengl32 -lgdi32 -lwinmm)
 target_include_directories( gsnake PRIVATE
