@@ -2,6 +2,7 @@
 #define _OSDV_GSNAKE_MAINMENU_ 0
 void RenderMainMenu();
 void LoadMainMenuScreen();
+void UnloadMainMenuScreen();
 void InitMainMenu();
 void UpdateMainMenuScreen();
 extern int selected_color;

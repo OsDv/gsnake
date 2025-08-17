@@ -3,8 +3,8 @@
 #include <raylib.h>
 #include <stdio.h>
 #include <time.h>
-const int GRID_WIDTH = 50;
-const int GRID_HEIGHT = 35;
+const int GRID_WIDTH = 40;
+const int GRID_HEIGHT = 25;
 const float GRID_BOUNDS_THICKNESS = 0.5f;
 const Vector2 GRID_POSITION = (Vector2) {0,0};
 const Rectangle GRID_BOUNDS = {-GRID_BOUNDS_THICKNESS, -GRID_BOUNDS_THICKNESS, GRID_WIDTH+GRID_BOUNDS_THICKNESS*2, GRID_HEIGHT+GRID_BOUNDS_THICKNESS*2};
@@ -19,7 +19,7 @@ const float SNAKE_WIDTH = 0; // TODO()
 const float POINT_WIDTH = 0; //TODO()
 const float SNACK_SPEED = 3.5f;
 const float SNACK_RUN_FACTOR = 2.0f;
-const float CAMERA_ZOOM = 25.0f;
+const float CAMERA_ZOOM = CELLS_SCALE;
 enum {UP,LEFT,DOWN,RIGHT};
 /*
 * Game state
@@ -98,12 +98,14 @@ bool CheckCollisionWithBounds(Snack *snack);
 bool CheckSnackSelfCollision(Snack *snack);
 void updateSnackSize(Snack *snack);
 void generatePoint(SnackPoint *point);
-void init_gameplay(Color color ,int skin,int head)
+
+void init_gameplay()
 {
 	SetRandomSeed((unsigned int)time(NULL));
-	LoadGameplayScreen();
 	int direction = GetRandomValue(UP,RIGHT);
-	snack.color = color;
+	snack.color = gameplayOptions.snakeColor;
+	snack.texHead = gameplayOptions.characterSkin;
+	snack.skin = gameplayOptions.snakeSkin;
 	InitSnack((Vector2) {GRID_WIDTH/2,GRID_HEIGHT/2}, 1, direction);
 	snack.alive = true;
     camera.zoom = CAMERA_ZOOM;
@@ -111,6 +113,7 @@ void init_gameplay(Color color ,int skin,int head)
     camera.target =(Vector2) {(float)GRID_BOUNDS.width,(float)GRID_HEIGHT/2};
 	gameState = PLAY;
 	score = 0;
+	LoadGameplayScreen();
 }
 void Render_gameplay()
 {
@@ -124,10 +127,22 @@ void Render_gameplay()
 	DrawRectangleLinesEx(GRID_BOUNDS,GRID_BOUNDS_THICKNESS , LIGHTGRAY);
 	DrawRectangle(GRID_POSITION.x, GRID_POSITION.y, GRID_WIDTH * CELL_WIDTH, GRID_HEIGHT * CELL_WIDTH,ColorAlpha(LIGHTGRAY,0.5f));
 		for(int i=0;i<snack.size;i++){
-			if(i==snack.head) DrawRectangle(snack.position[i].x,snack.position[i].y,CELL_WIDTH,CELL_WIDTH,RED);
-			else DrawRectangle(snack.position[i].x,snack.position[i].y,CELL_WIDTH,CELL_WIDTH,snack.color);
+				if(i==snack.head){
+					if(snack.texHead.id!=-1){
+						DrawTextureEx(snack.texHead,snack.position[i],0,1/(float)snack.texHead.width,WHITE);
+					} else {
+						DrawRectangle(snack.position[i].x,snack.position[i].y,CELL_WIDTH,CELL_WIDTH,RED);
+					}
+				} 
+				else {
+					if (snack.skin.id!=-1)DrawTextureEx(snack.skin,snack.position[i],0,1/(float)snack.skin.width,WHITE);
+					else DrawRectangle(snack.position[i].x,snack.position[i].y,CELL_WIDTH,CELL_WIDTH,snack.color);
+				} 
 		}
-	if (point.ready) DrawRectangleRec(point.bounds,point.color);		
+	if (point.ready){
+		if (point.tex.id!=-1) DrawTextureEx(point.tex,(Vector2){point.bounds.x,point.bounds.y},0,(1/(float)point.tex.width),WHITE);
+		else DrawRectangleRec(point.bounds,point.color);		
+	} 
 	EndMode2D();
 	// Draw score
 	DrawText(TextFormat("Score: %d",score),10,10, 18, RAYWHITE);
@@ -317,6 +332,22 @@ void LoadGameplayScreen()
 		SCREEN_HEIGHT/2 + 10 + TextMesure.y,
 		200,50
 	};
+	point.tex = gameplayOptions.foodSkin;
+	
+	if (!IsTextureValid(point.tex)){
+		printf("WARNING:FOOD texture not load\n");
+		point.tex.id = -1;
+	}
+	if (!IsTextureValid(snack.texHead))
+	{
+		TraceLog(LOG_WARNING,"Character texture not load");
+		snack.texHead.id =-1;
+	}
+	if (!IsTextureValid(gameplayOptions.snakeSkin))
+	{
+		TraceLog(LOG_WARNING,"Skin texture not load or NONE!");
+		snack.skin.id = -1;
+	}
 }
 
 void generatePoint(SnackPoint *point)
@@ -328,4 +359,12 @@ void generatePoint(SnackPoint *point)
 	point->ready = true;
 	printf("Point generated at: %f %f\n",point->bounds.x,point->bounds.y);
 
+}
+void UnlaodGameplayScreen()
+{
+	UnloadFont(DepixelFont);
+	UnloadTexture(snack.texHead);
+	UnloadTexture(point.tex);
+	UnloadTexture(snack.skin);
+	UnloadTexture(snack.skin);
 }
