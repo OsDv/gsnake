@@ -1,9 +1,0 @@
-# ninja log v6
-73	991	7763216073763482	CMakeFiles/gsnake.dir/src/screen_gameplay.c.o	b35c23d7b87de48d
-34	940	7763216073367770	CMakeFiles/gsnake.dir/src/main.c.o	3a285c52cc09ce9
-83	825	7763216073853224	CMakeFiles/gsnake.dir/src/screen_mainmenu.c.o	c88d54e1c994ff5a
-38	25503	7763774041815067	gsnake.html	20419a98c888fd2d
-232	1754	7770952011767481	CMakeFiles/gsnake.dir/src/screen_mainmenu.c.o	c88d54e1c994ff5a
-101	2030	7770952010453326	CMakeFiles/gsnake.dir/src/main.c.o	3a285c52cc09ce9
-196	2119	7770952011405833	CMakeFiles/gsnake.dir/src/screen_gameplay.c.o	b35c23d7b87de48d
-2120	29187	7770952030633427	gsnake.html	20419a98c888fd2d
