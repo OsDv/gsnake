@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="EN-us">
+<head>
+    <meta charset="utf-8">
+    <title>Game Of Life</title>
+    <meta name="viewport" content="width=device-width">
+    <meta content="Game Of LIfe" property="og:title">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<header>
+		<h1>Gumbo's Snake</h1>
+		<p>By Guembo for gumbos</p>
+	</header>
+	<main>
+		<div class="canvas-container">
+			<div class="fullscreen-toggle">
+				<input type="checkbox" id="fullscreen-toggle">
+				<label for="fullscreen-toggle">Fullscreen</label>
+			</div>
+			<canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex="-1"></canvas>
+		</div>
+		<script src="fullscreen.js"></script>
+		<script async src="gsnake.js"></script>
+
+	</main>
+	<div class="controls-container">
+		<h2>Controls</h2>
+		<div class="flex-box">
+			<div>
+				<p>Main menu</p>
+				<ul>
+					<li><code>UP/DOWN</code>: Select options (skin,character,color..)</li>
+					<li><code>RIGHT/LEFT</code>: Chose prefered skin,color...</li>
+					<li><code>[ENTER]</code>: To start game</li>
+				</ul>
+			</div>
+			<div>
+				<p>Gameplay</p>
+				<ul>
+					<li><code>WASD</code>: For movement</li>
+					<li><code>P</code>: Pause game</li>
+				</ul>
+			</div>
+		</div>
+		</div>
+	<hr>
+	<footer>
+		<p>Created by <strong>Oussama Belguesmia</strong>. View the source code on <a href="https://github.com/osdv/gsnake" target="_blank">GitHub</a>.</p>
+		<p>&copy; 2025 OSDV. All rights reserved.</p>
+	</footer>
+</body>
+</html>
