@@ -20,7 +20,7 @@ string(APPEND LINK_FLAGS "-s USE_GLFW=3 ")
 string(APPEND LINK_FLAGS "-sASYNCIFY ")
 string(APPEND LINK_FLAGS "-DPLATFORM_WEB ")
 string(APPEND LINK_FLAGS "--shell-file ${CMAKE_SOURCE_DIR}/template.html ")
-string(APPEND LINK_FLAGS "--embed-file ${CMAKE_SOURCE_DIR}/res/")
+string(APPEND LINK_FLAGS "--embed-file ${CMAKE_SOURCE_DIR}/res@/res/ ")
 set_target_properties(gsnake PROPERTIES LINK_FLAGS "${LINK_FLAGS}")
 target_compile_definitions(gsnake PRIVATE PLATFORM_WEB)
 
