@@ -12,7 +12,7 @@
 #define SKINZ_TEXTURES_PATH "res/textures/skin/"
 enum GAME_STATE {PLAY,MAIN_MENU,DEAD,PAUSE};
 extern int gameState;
-#define MAX_CHARACTERS 4
+#define MAX_CHARACTERS 10
 #define MAX_FOOD_SKINS 2
 #define MAX_SNAKE_SKINS 2
 typedef struct
